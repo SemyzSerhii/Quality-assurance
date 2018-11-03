@@ -1,7 +1,6 @@
 class Feature
-  include Math
 
-  def task_1_log(first_number, second_number)
+  def self.sum_diff_product(first_number, second_number)
     {
       sum: first_number + second_number,
       diff: first_number - second_number,
@@ -9,284 +8,295 @@ class Feature
     }
   end
 
-  def task_2_log(value_x, value_y)
+  def self.formula_solution(value_x, value_y)
     (value_x.abs - value_y.abs) / (1 + (value_x * value_y).abs).to_f
   end
 
-  def task_3_log(length_of_the_edge)
+  def self.volume_area_cube(length_of_the_edge)
     {
       volume: length_of_the_edge ** 3,
       area: 6 * length_of_the_edge ** 2
     }
   end
 
-  def task_4_log(first_number, second_number)
+  def self.average_arithm_geomet_num(first_number, second_number)
     {
       arithmetical: (first_number + second_number) / 2.to_f,
-      geometrical: sqrt(first_number * second_number)
+      geometrical: Math.sqrt(first_number * second_number)
     }
   end
 
-
-  def task_5_log(first_number, second_number)
+  def self.average_arithm_num_and_geomet_mod(first_number, second_number)
     {
       arithmetical: (first_number + second_number) / 2,
-      geometrical: sqrt(first_number.abs * second_number.abs)
+      geometrical: Math.sqrt(first_number.abs * second_number.abs)
     }
   end
 
-  def task_6_log(first_leg, second_leg)
+  def self.area_hypotenuse_right_triangle(first_leg, second_leg)
     {
       area: 0.5 * first_leg * second_leg,
-      hypotenuse: sqrt(first_leg ** 2 + second_leg ** 2)
+      hypotenuse: Math.sqrt(first_leg ** 2 + second_leg ** 2)
     }
   end
 
-  def task_7_log(f_volue, f_temperature, s_value, s_temperature)
+  def self.value_tempetature_water(f_volue, f_temperature, s_value, s_temperature)
     {
       value: f_volue + s_value,
-      tempetature: ((f_volue * f_temperature) + (s_value * s_temperature)) / (f_volue + s_value).to_f}
+      tempetature: ((f_volue * f_temperature) + (s_value * s_temperature)) / (f_volue + s_value).to_f
+    }
   end
 
-  def task_8_log(number_of_corners, radius)
-    number_of_corners * 2 * radius * sin(PI / number_of_corners)
+  def self.perimeter_right_multicutnik(number_of_corners, radius)
+    number_of_corners * 2 * radius * Math.sin(Math::PI / number_of_corners)
   end
 
-  def task_9_log(first_resistance, second_resistance, third_resistance)
+  def self.compound_resistance(first_resistance, second_resistance, third_resistance)
     1 / ((1 / first_resistance.to_f) + (1 / second_resistance.to_f) + (1 / third_resistance.to_f))
   end
 
-  def task_10_log(height, constant_g = 9.83)
-    sqrt(2 * height / constant_g)
+  def self.fall_time(height, constant_g = 9.83)
+    Math.sqrt(2 * height / constant_g)
   end
 
-  def task_11_d_log(value_x, value_y, value_z)
+  def self.calculations_value_a_b(value_x, value_y, value_z)
     {
-      value_a: (2 * cos(value_x - PI / 6)) / (1 / 2 + sin(value_y) ** 2),
+      value_a: (2 * Math.cos(value_x - Math::PI / 6)) / (1 / 2 + Math.sin(value_y) ** 2),
       value_b: 1 + (value_z ** 2 / 3 + value_z ** 2 / 5)
     }
   end
 
-  def task_12_log(side)
-    (1 / 2.to_f) * side * sqrt(side ** 2 - side ** 2 / 2)
+  def self.area_equilateral_triangle(side)
+    (1 / 2.to_f) * side * Math.sqrt(side ** 2 - side ** 2 / 2)
   end
 
-  def task_13_log(length, constant_g = 9.83)
-    2 * PI * sqrt(length / constant_g)
+  def self.period_of_oscillation(length, constant_g = 9.83)
+    2 * Math::PI * Math.sqrt(length / constant_g)
   end
 
-  def task_14_log(first_mass, second_mass, distance, g = 0.000000000067385)
+  def self.force_of_gravity(first_mass, second_mass, distance, g = 0.000000000067385)
     g * ((first_mass * second_mass) / distance ** 2)
   end
 
-  def task_15_log(first_leg, hypotenuse)
-    second_leg = sqrt(hypotenuse ** 2 - first_leg ** 2)
+  def self.second_leg_radius_inscribed_circle(first_leg, hypotenuse)
+    second_leg = Math.sqrt(hypotenuse ** 2 - first_leg ** 2)
     triangle_semi_perimeter = 0.5 * (first_leg + hypotenuse + second_leg)
     {
-      radius: sqrt((triangle_semi_perimeter - first_leg) * (triangle_semi_perimeter - hypotenuse) *
+      radius: Math.sqrt((triangle_semi_perimeter - first_leg) * (triangle_semi_perimeter - hypotenuse) *
         (triangle_semi_perimeter - second_leg)) / triangle_semi_perimeter,
       second_leg: second_leg
     }
   end
 
-  def task_16_log(circumference)
-    radius = circumference / (2 * PI)
-    PI * radius ** 2
+  def self.area_of_a_circle(circumference)
+    radius = circumference / (2 * Math::PI)
+    Math::PI * radius ** 2
   end
 
-  def task_17_log(inner_radius = 20, outer_radius)
-    (PI * (inner_radius ** 2 - outer_radius ** 2)).to_i
+  def self.ring_area(inner_radius = 20, outer_radius)
+    (Math::PI * (inner_radius ** 2 - outer_radius ** 2)).to_i
   end
 
-  def task_18_log(angles_A, angles_B, angles_C, radius)
+  def self.sides_triangle(angles_A, angles_B, angles_C, radius)
     {
-      side_a: radius * 2 * sin(angles_A).abs,
-      side_b: radius * 2 * sin(angles_B).abs,
-      side_c: radius * 2 * sin(angles_C).abs
+      side_a: calculate_triangle_sides(radius, angles_A),
+      side_b: calculate_triangle_sides(radius, angles_B),
+      side_c: calculate_triangle_sides(radius, angles_C)
     }
   end
 
-  def task_19_log(acceleration_f, acceleration_s, speed_f, speed_s, distance)
+  def self.meeting_time(acceleration_f, acceleration_s, speed_f, speed_s, distance)
     average_acceleration = (acceleration_f + acceleration_s) / 2
     average_speed = speed_f + speed_s
-    (-average_speed + sqrt(-average_speed ** 2 + (4 * distance * average_acceleration))) / (2 * average_acceleration)
+    (-average_speed + Math.sqrt(-average_speed ** 2 + (4 * distance * average_acceleration))) / (2 * average_acceleration)
   end
 
-  def task_20_log(value_a, value_d, value_n)
+  def self.sum_of_arithmetic_progression(value_a, value_d, value_n)
     ((2 * value_a + (value_n - 1) * value_d) / 2) * value_n
   end
 
-  def task_22_log(greater_base, smaller_base, angle)
-    (((greater_base + smaller_base) / 2) * ((greater_base - smaller_base) / 2) * tan(angle)).to_i
+  def self.ravine_trapezium_area(greater_base, smaller_base, angle)
+    (((greater_base + smaller_base) / 2) * ((greater_base - smaller_base) / 2) * Math.tan(angle)).to_i
   end
 
-  def task_23_log_height(side_a, side_b, side_c)
+  def self.lengths_heig_med_bis_and_radius_circle(side_a, side_b, side_c)
+    semiperimeter = ((side_a + side_b + side_c) / 2).to_f
     {
+      #length height
       height_a: calculate_triangle_height(side_a, side_b, side_c, side_a),
       height_b: calculate_triangle_height(side_a, side_b, side_c, side_b),
       height_c: calculate_triangle_height(side_a, side_b, side_c, side_c),
+      #length median
+      median_a: calculate_triangle_median(side_b, side_c, side_a),
+      median_b: calculate_triangle_median(side_a, side_c, side_b),
+      median_c: calculate_triangle_median(side_a, side_b, side_c),
+      #length bisector
+      bisector_a: calculate_triangle_bisector(side_b, side_c, side_a),
+      bisector_b: calculate_triangle_bisector(side_a, side_c, side_b),
+      bisector_c: calculate_triangle_bisector(side_a, side_b, side_c),
+      #radius circumscribed inscribed circle
+      radius_circumscribed: (side_a * side_b * side_c / (4 * Math.sqrt(semiperimeter *
+      (semiperimeter - side_a) * (semiperimeter - side_b) * (semiperimeter - side_c)))).round(1),
+      radius_inscribed: Math.sqrt((semiperimeter - side_a) * (semiperimeter - side_b) *
+        (semiperimeter - side_c) / semiperimeter).round(1)
     }
   end
 
-  def task_23_log_median(length_a, length_b, length_c)
-    {
-      median_a: (sqrt((2 * length_b ** 2 + 2 * length_c ** 2 - length_a ** 2) / 2)).floor,
-      median_b: (sqrt((2 * length_a ** 2 + 2 * length_c ** 2 - length_b ** 2) / 2)).floor,
-      median_c: (sqrt((2 * length_a ** 2 + 2 * length_b ** 2 - length_c ** 2) / 2)).floor
-    }
-  end
-
-  def task_23_log_bisector(length_a, length_b, length_c)
-    half_perimeter = (length_a + length_b + length_c) / 2
-    {bisector_a: (2 * sqrt(length_b * length_c * half_perimeter *
-      (half_perimeter - length_a)) / (length_b + length_c)).floor,
-      bisector_b: (2 * sqrt(length_a * length_c * half_perimeter *
-        (half_perimeter - length_b)) / (length_a + length_c)).floor,
-      bisector_c: (2 * sqrt(length_a * length_b * half_perimeter *
-        (half_perimeter - length_c)) / (length_b + length_a)).floor}
-  end
-
-  def task_23_log_radius(length_a, length_b, length_c)
-    half_perimeter = ((length_a + length_b + length_c) / 2).to_f
-    {radius_circumscribed: (length_a * length_b * length_c / (4 * sqrt(half_perimeter *
-      (half_perimeter - length_a) * (half_perimeter - length_b) * (half_perimeter - length_c)))).round(1),
-      radius_inscribed: sqrt((half_perimeter - length_a) * (half_perimeter - length_b) *
-        (half_perimeter - length_c) / half_perimeter).round(1)}
-  end
-
-  def task_24_log(coordinates_x_frt_point, coordinates_y_frt_point, coordinates_x_scnd_point, coordinates_y_scnd_point)
-    distance = (sqrt((coordinates_x_scnd_point - coordinates_x_frt_point) ** 2 +
+  def self.distance_between_points(coordinates_x_frt_point, coordinates_y_frt_point,
+    coordinates_x_scnd_point, coordinates_y_scnd_point)
+    distance = (Math.sqrt((coordinates_x_scnd_point - coordinates_x_frt_point) ** 2 +
       (coordinates_y_scnd_point - coordinates_y_frt_point) ** 2)).round
   end
 
-  def task_25_log(coordinates_x_point_a, coordinates_y_point_a, coordinates_x_point_b, coordinates_y_point_b,
-    coordinates_x_point_c, coordinates_y_point_c)
-    distance_a = sqrt((coordinates_x_point_b - coordinates_x_point_a) ** 2 +
-      (coordinates_y_point_b - coordinates_y_point_a) ** 2).round
-    distance_b = sqrt((coordinates_x_point_b - coordinates_x_point_c) ** 2 +
-      (coordinates_y_point_b - coordinates_y_point_c) ** 2).round
-    distance_c = sqrt((coordinates_x_point_c - coordinates_x_point_a) ** 2 +
-      (coordinates_y_point_c - coordinates_y_point_a) ** 2).round
-    half_perimeter = ((distance_a + distance_b + distance_c) / 2)
-    {perimeter: distance_a + distance_b + distance_c,
-      area: sqrt(half_perimeter * (half_perimeter - distance_a) * (half_perimeter - distance_b) *
-        (half_perimeter - distance_c)).round}
+  def self.perimeter_ara_triangle(coordinates_x_point_a, coordinates_y_point_a, coordinates_x_point_b,
+    coordinates_y_point_b, coordinates_x_point_c, coordinates_y_point_c)
+    distance_a = calcuate_distance(coordinates_x_point_b, coordinates_x_point_a,
+      coordinates_y_point_b,coordinates_y_point_a)
+    distance_b = calcuate_distance(coordinates_x_point_b, coordinates_x_point_c,
+      coordinates_y_point_b, coordinates_y_point_c)
+    distance_c =  calcuate_distance(coordinates_x_point_c, coordinates_x_point_a,
+      coordinates_y_point_c, coordinates_y_point_a)
+    semiperimeter = ((distance_a + distance_b + distance_c) / 2)
+    {
+      perimeter: distance_a + distance_b + distance_c,
+      area: Math.sqrt(semiperimeter * (semiperimeter - distance_a) * (semiperimeter - distance_b) *
+        (semiperimeter - distance_c)).round
+    }
   end
 
-  def task_26_log(number_arc, radius = 13.7)
+  def self.area_sector(number_arc, radius = 13.7)
     area = ((number_arc / 2.to_f) * radius ** 2).round
   end
 
-  def task_27_log(side_a, side_b, side_c)
+  def self.angeles_triangle (side_a, side_b, side_c)
     angele_b = ((side_a ** 2 + side_c ** 2) - side_b ** 2) / (2 * side_c * side_a).to_f * 180
     angele_c = ((side_a ** 2 + side_b ** 2) - side_c ** 2) / (2 * side_b * side_a).to_f * 180
     angele_a = 180 - angele_b + angele_c
-    {angele_a: angele_a.abs.round,
+    {
+      angele_a: angele_a.abs.round,
       angele_b: angele_b.abs.round,
-      angele_c: angele_c.abs.round}
+      angele_c: angele_c.abs.round
+    }
   end
 
-  def task_28_log(number_x)
+  def self.calculate_equation_one_number(number_x)
     6 + number_x * (-5 + number_x * (4 - 3 * number_x + 2 * (number_x + number_x)))
   end
 
-  def task_29_log(num_x, num_y)
+  def self.calculate_equation_two_number(num_x, num_y)
     num_x * (num_x + num_x + num_x - (num_y + num_y) - 7 * num_x + 15) + num_y * (10 - 4 * num_y) +
       num_x * (num_x + num_x - 3) + 6
   end
 
-  def task_30_log(num_x)
-    {answer1: 1 + num_x * (-2 + num_x * (3 - 4 * num_x)),
-      answer2: 1 + num_x * (2 + num_x * (3 + 4 * num_x))}
+  def self.calculate_two_equations(num_x)
+    {
+      answer1: 1 + num_x * (-2 + num_x * (3 - 4 * num_x)),
+      answer2: 1 + num_x * (2 + num_x * (3 + 4 * num_x))
+    }
   end
 
-  def task_33_log(num_x, num_y)
+  def self.min_max_two_number(num_x, num_y)
     a = num_x > num_y ? "max number is x= #{num_x}" : "max number is y= #{num_y}"
     b = num_x < num_y ? "min number is x= #{num_x}" : "min number is y = #{num_y}"
-    {a: a,
+    {
+      a: a,
       b: b,
-      c: "#{a}, #{b}"}
+      c: "#{a}, #{b}"
+    }
   end
 
-  def task_34_log(num_x, num_y, num_z)
-    {a: " max number = #{ [num_x, num_y, num_z].max}",
-      b: "min and max number = #{ [num_x, num_y, num_z].minmax}"}
+  def self.min_max_three_number(num_x, num_y, num_z)
+    {
+      a: " max number = #{ [num_x, num_y, num_z].max}",
+      b: "min and max number = #{ [num_x, num_y, num_z].minmax}"
+    }
   end
 
-  def task_35_log(num_x, num_y, num_z)
+  def self.min_max_two_equations(num_x, num_y, num_z)
     a = num_x + num_y + num_z
     b = num_x * num_y * num_z
-    {m: a > b ? "max sum equation = #{a}" : "max product equation = #{b} ",
-      n: ((a / 2.to_f) ** 2) + 1 < b ** 2 + 1 ? "min sum equation= #{(a / 2.to_f) ** 2 + 1}" : " min product equation = #{b ** 2 + 1}"}
+    {
+      m: a > b ? "max sum equation = #{a}" : "max product equation = #{b} ",
+      n: ((a / 2.to_f) ** 2) + 1 < b ** 2 + 1 ? "min sum equation= #{(a / 2.to_f) ** 2 + 1}" :
+        " min product equation = #{b ** 2 + 1}"
+    }
   end
 
-  def task_36_log(num_a, num_b, num_c)
+  def self.inequality_a_less_b_less_c(num_a, num_b, num_c)
     (num_a < num_b && num_b < num_c) ? 'inequality a < b < c holds' : "inequality a < b < c don't holds"
   end
 
-  def task_37_log(num_a, num_b, num_c)
+  def self.inequality_a_more_equal_b_more_equal_c(num_a, num_b, num_c)
     (num_a >= num_b && num_b >= num_c) ? "inequality a >= b >= c holds new a- #{num_a * 2}, b- #{num_b * 2}," \
     " c- #{num_c * 2}" : "inequality a >= b >= c don't holds new a-#{num_a.abs}, b-#{num_b.abs}, c-#{num_c.abs}"
   end
 
-  def task_38_log(num_x, num_y)
+  def self.calculate_number_z(num_x, num_y)
     num_x > num_y ? "z = #{num_x - num_y}" : "z = #{num_y - (num_x + 1)}"
   end
 
-  def task_39_log(num_x, num_y)
+  def self.comparisons_x_y_and_output(num_x, num_y)
     num_x > num_y ? "The first number is more = #{num_x}" : "both numbers #{num_x}, #{num_y}"
   end
 
-  def task_40_log(num_x, num_y)
+  def self.comparisons_x_y_and_output_or_replacement_x_by_0(num_x, num_y)
     num_x <= num_y ? " Replace #{num_x = 0}" : "both numbers #{num_x}, #{num_y}"
   end
 
-  def task_42_log(num_x, num_y)
-    num_x > num_y ? " Replace x= #{x = (num_x + num_y) / 2.to_f}," \
-    "y= #{y = num_x * num_y * 2}" : "Replace y= #{y = (num_x + num_y) / 2.to_f}, x= #{x = (num_x * num_y) * 2 }"
+  def self.comparisons_x_y_and_replacement_less_halfsum_more_doubled(num_x, num_y)
+    num_x > num_y ? " Replace x= #{x = (num_x + num_y) / 2.to_f}, y= #{y = num_x * num_y * 2}" :
+      "Replace y= #{y = (num_x + num_y) / 2.to_f}, x= #{x = (num_x * num_y) * 2 }"
   end
 
-  def task_43_log(num_x, num_y, num_z)
-    {a: num_x >= 0 ? "New x - #{num_x ** 2} " : nil,
+  def self.squaring_non_negative_number(num_x, num_y, num_z)
+    {
+      a: num_x >= 0 ? "New x - #{num_x ** 2} " : nil,
       b: num_y >= 0 ? "New y - #{num_y ** 2} " : nil,
-      c: num_z >= 0 ? "New z - #{num_z ** 2} " : nil}
+      c: num_z >= 0 ? "New z - #{num_z ** 2} " : nil
+    }
   end
 
-  def task_61_log(number_x)
-    {a: number_x.floor,
+  def self.floor_round_ineteger_number_x(number_x)
+    {
+      a: number_x.floor,
       b: number_x.round,
-      c: number_x.to_i}
+      c: number_x.to_i
+    }
   end
 
-  def task_62_log(number_x)
+  def self.determine_even_number(number_x)
     number_x % 2 == 0 ? 'Number is even' : 'Number is  not even!'
   end
 
-  def task_63_log(num_a, num_b, num_r, num_s)
+  def self.determine_venness_remainder_division_r_s(num_a, num_b, num_r, num_s)
     c = num_a % num_b
-    {x: ('remainder equal to r' if c == num_r),
+    {
+      x: ('remainder equal to r' if c == num_r),
       y: ('remainder equal to s' if c == num_s),
-      z: ('remainder not equal to s or r' if (c != num_r && c != num_s))}
+      z: ('remainder not equal to s or r' if (c != num_r && c != num_s))
+    }
   end
 
-  def task_64_log(number_n)
+  def self.determining_hundreds_in_number(number_n)
     number_n > 99 ? "Your number have #{number_n / 100.to_i} hundreds" : 'Number must be more 99!'
   end
 
-  def task_65_log(number_n)
+  def self.equality_square_number_n_cube_its_sum(number_n)
     a = number_n.to_s.split('').map.each {|x| x.to_i}.sum
     number_n ** 2 == a ** 3 ? 'They are equal' : 'They are not equal'
   end
 
-  def task_67_log(num_n)
-    {including: num_n.to_s.split("").length,
+  def self.including_sum_last_first_last_but_one_number_value_n(num_n)
+    {
+      including: num_n.to_s.split("").length,
       sum: num_n.to_s.split("").map.each {|x| x.to_i}.sum,
       last: num_n.to_s.split("").last.to_i,
       first: num_n.to_s.split("").first.to_i,
-      last_but_one: num_n.to_s[-2].to_i}
+      last_but_one: num_n.to_s[-2].to_i
+    }
   end
 
-  def task_68_log(number)
+  def self.number_check(number)
     {
       a: number == number.to_s.reverse.to_i ? 'Number is palindrome' : 'Number is not palindrome',
       b: (number.to_s.split('').uniq.size == 2 && number != number.to_s.reverse.to_i) ?
@@ -296,17 +306,38 @@ class Feature
     }
   end
 
-  def task_79_log
+  def self.calculate_the_progression
     result = 1
-    (0.1..10).step(0.1) { |i| result *= 1 + sin(i) }
+    (0.1..10).step(0.1) { |i| result *= 1 + Math.sin(i) }
     result
   end
 
   private
 
-  def calculate_triangle_height(side_a, side_b, side_c, opositive_side)
+  def self.calculate_triangle_sides(r, angles)
+    r * 2 * Math.sin(angles).abs
+  end
+
+  def self.calculate_triangle_height(side_a, side_b, side_c, opositive_side)
     semiperimeter = (side_a + side_b + side_c) / 2
-    area = sqrt(semiperimeter * (semiperimeter - side_a) * (semiperimeter - side_b) * (semiperimeter - side_c))
-    (opositive_side / 2) * area
+    area = Math.sqrt(semiperimeter * (semiperimeter - side_a) * (semiperimeter - side_b) * (semiperimeter - side_c))
+    (opositive_side / 2) * area.round(1)
+  end
+
+  def self.calculate_triangle_median(side_1, side_2, side_3)
+    (Math.sqrt((2 * side_1 ** 2 + 2 * side_2** 2 - side_3 ** 2) / 2)).round(1)
+  end
+
+  def self.calculate_triangle_bisector(side_1, side_2, side_3)
+    semiperimeter = (side_1 + side_2 + side_3) / 2
+    (2 * Math.sqrt(side_1 * side_2 * semiperimeter * (semiperimeter - side_3)) / (side_1 + side_2))  .round(1)
+  end
+  def self.calcuate_distance(coordinate_x_point_1, ccoordinate_x_point_2,coordinate_y_point_1,coordinate_y_point_2)
+    Math.sqrt((coordinate_x_point_1 - ccoordinate_x_point_2) ** 2 +
+      (coordinate_y_point_1 - coordinate_y_point_2) ** 2).round
   end
 end
+
+
+
+
