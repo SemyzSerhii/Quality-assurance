@@ -196,94 +196,92 @@ class Feature
   end
 
   def self.min_max_two_number(num_x, num_y)
-    a = num_x > num_y ? "max number is x= #{num_x}" : "max number is y= #{num_y}"
-    b = num_x < num_y ? "min number is x= #{num_x}" : "min number is y = #{num_y}"
     {
-      a: a,
-      b: b,
-      c: "#{a}, #{b}"
+      max: [num_x, num_y].max,
+      min: [num_x, num_y].min,
+      max_min: [num_x, num_y].minmax.reverse
     }
   end
 
   def self.min_max_three_number(num_x, num_y, num_z)
     {
-      a: " max number = #{ [num_x, num_y, num_z].max}",
-      b: "min and max number = #{ [num_x, num_y, num_z].minmax}"
+      max: [num_x, num_y, num_z].max,
+      min_max: [num_x, num_y, num_z].minmax
     }
   end
 
   def self.min_max_two_equations(num_x, num_y, num_z)
-    a = num_x + num_y + num_z
-    b = num_x * num_y * num_z
+    sum = num_x + num_y + num_z
+    product = num_x * num_y * num_z
+    new_sum =  ((sum / 2.to_f) ** 2) + 1
+    new_product = product ** 2 + 1
     {
-      m: a > b ? "max sum equation = #{a}" : "max product equation = #{b} ",
-      n: ((a / 2.to_f) ** 2) + 1 < b ** 2 + 1 ? "min sum equation= #{(a / 2.to_f) ** 2 + 1}" :
-        " min product equation = #{b ** 2 + 1}"
+      max: sum > product ? sum : product,
+      min: new_sum < new_product ? new_sum : new_product
     }
   end
 
   def self.inequality_a_less_b_less_c(num_a, num_b, num_c)
-    (num_a < num_b && num_b < num_c) ? 'inequality a < b < c holds' : "inequality a < b < c don't holds"
+    (num_a < num_b && num_b < num_c) ? true : false
   end
 
   def self.inequality_a_more_equal_b_more_equal_c(num_a, num_b, num_c)
-    (num_a >= num_b && num_b >= num_c) ? "inequality a >= b >= c holds new a- #{num_a * 2}, b- #{num_b * 2}," \
-    " c- #{num_c * 2}" : "inequality a >= b >= c don't holds new a-#{num_a.abs}, b-#{num_b.abs}, c-#{num_c.abs}"
+    (num_a >= num_b && num_b >= num_c) ? [num_a * 2, num_b * 2,num_c * 2] : [num_a.abs, num_b.abs, num_c.abs]
   end
 
   def self.calculate_number_z(num_x, num_y)
-    num_x > num_y ? "z = #{num_x - num_y}" : "z = #{num_y - (num_x + 1)}"
+    num_x > num_y ? num_x - num_y : num_y - (num_x + 1)
   end
 
   def self.comparisons_x_y_and_output(num_x, num_y)
-    num_x > num_y ? "The first number is more = #{num_x}" : "both numbers #{num_x}, #{num_y}"
+    num_x > num_y ? num_x : [num_x, num_y]
   end
 
   def self.comparisons_x_y_and_output_or_replacement_x_by_0(num_x, num_y)
-    num_x <= num_y ? " Replace #{num_x = 0}" : "both numbers #{num_x}, #{num_y}"
+    num_x <= num_y ? num_x = 0 : [num_x, num_y]
   end
 
   def self.comparisons_x_y_and_replacement_less_halfsum_more_doubled(num_x, num_y)
-    num_x > num_y ? " Replace x= #{x = (num_x + num_y) / 2.to_f}, y= #{y = num_x * num_y * 2}" :
-      "Replace y= #{y = (num_x + num_y) / 2.to_f}, x= #{x = (num_x * num_y) * 2 }"
+    num_x > num_y ? [x = (num_x + num_y) / 2.to_f, y = num_x * num_y * 2] :
+     [y = (num_x + num_y) / 2.to_f, x = (num_x * num_y) * 2 ]
   end
 
   def self.squaring_non_negative_number(num_x, num_y, num_z)
     {
-      a: num_x >= 0 ? "New x - #{num_x ** 2} " : nil,
-      b: num_y >= 0 ? "New y - #{num_y ** 2} " : nil,
-      c: num_z >= 0 ? "New z - #{num_z ** 2} " : nil
+      x_more_0: num_x >= 0 ? num_x ** 2 : nil,
+      b_more_0: num_y >= 0 ? num_y ** 2 : nil,
+      c_more_0: num_z >= 0 ? num_z ** 2 : nil
     }
   end
 
   def self.floor_round_ineteger_number_x(number_x)
     {
-      a: number_x.floor,
-      b: number_x.round,
-      c: number_x.to_i
+      floor: number_x.floor,
+      round: number_x.round,
+      to_i: number_x.to_i
     }
   end
 
   def self.determine_even_number(number_x)
-    number_x % 2 == 0 ? 'Number is even' : 'Number is  not even!'
+    number_x % 2 == 0 ? true : false
   end
 
   def self.determine_venness_remainder_division_r_s(num_a, num_b, num_r, num_s)
-    c = num_a % num_b
+    remainder = num_a % num_b
     {
-      x: ('remainder equal to r' if c == num_r),
-      y: ('remainder equal to s' if c == num_s),
-      z: ('remainder not equal to s or r' if (c != num_r && c != num_s))
+      remainder_equal_r: remainder == num_r ? true : nil,
+      remainder_equal_s: remainder == num_s ? true : nil,
+      remainder_not_equal_r_or_s:  remainder != num_r && remainder != num_s ? true : nil
     }
   end
 
   def self.determining_hundreds_in_number(number_n)
-    number_n > 99 ? "Your number have #{number_n / 100.to_i} hundreds" : 'Number must be more 99!'
+    number_n > 99 ? number_n / 100.to_i : false
   end
 
   def self.equality_square_number_n_cube_its_sum(number_n)
-    a = number_n.to_s.split('').map.each {|x| x.to_i}.sum
-    number_n ** 2 == a ** 3 ? 'They are equal' : 'They are not equal'
+    sum = number_n.to_s.split('').map.each {|x| x.to_i}.sum
+    number_n ** 2 == sum ** 3 ? true : false
   end
 
   def self.including_sum_last_first_last_but_one_number_value_n(num_n)
@@ -298,11 +296,11 @@ class Feature
 
   def self.number_check(number)
     {
-      a: number == number.to_s.reverse.to_i ? 'Number is palindrome' : 'Number is not palindrome',
-      b: (number.to_s.split('').uniq.size == 2 && number != number.to_s.reverse.to_i) ?
-        'Number have three the same digits' : "Number don't have three the same digits",
-      c: number.to_s.split('') == number.to_s.split('').uniq ?
-        'Number have all the different digits' : "Number don't have all the different digits"
+      palindrome: number == number.to_s.reverse.to_i ? true : false ,
+      three_identical_numbers: (number.to_s.split('').uniq.size == 2 && number != number.to_s.reverse.to_i) ?
+        true : false ,
+      numbers_different: number.to_s.split('') == number.to_s.split('').uniq ?
+        true : false
     }
   end
 
@@ -337,6 +335,8 @@ class Feature
       (coordinate_y_point_1 - coordinate_y_point_2) ** 2).round
   end
 end
+
+
 
 
 

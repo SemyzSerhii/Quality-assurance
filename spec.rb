@@ -181,125 +181,123 @@ class Spec
   end
 
   def min_max_two_number_t
-    expected_result = { a: "max number is x= 5", b:  "min number is y = 3",
-      c: "max number is x= 5, min number is y = 3" }
+    expected_result = { max: 5, min: 3, max_min: [5, 3]}
     assert(expected: expected_result, actual: Feature.min_max_two_number(5, 3))
   end
 
   def min_max_three_number_t
-    expected_result = { a: " max number = 6", b: "min and max number = [4, 6]" }
+    expected_result = { max: 6 , min_max: [4, 6] }
     assert(expected: expected_result, actual: Feature.min_max_three_number(4, 5, 6))
   end
 
   def min_max_two_equations_t
-    expected_result = { m: "max product equation = 120 ", n: "min sum equation= 57.25" }
+    expected_result = { max: 120, min:  57.25 }
     assert(expected: expected_result, actual: Feature.min_max_two_equations(4, 5, 6))
   end
 
   def inequality_a_less_b_less_c_t1
-    assert(expected: 'inequality a < b < c holds' , actual: Feature.inequality_a_less_b_less_c(4, 5, 6))
+    assert(expected: true , actual: Feature.inequality_a_less_b_less_c(4, 5, 6))
   end
 
   def inequality_a_less_b_less_c_t2
-    assert(expected: "inequality a < b < c don't holds" ,actual: Feature.inequality_a_less_b_less_c(5, 4, 6))
+    assert(expected: false ,actual: Feature.inequality_a_less_b_less_c(5, 4, 6))
   end
 
   def inequality_a_more_equal_b_more_equal_c_t1
-    assert(expected: "inequality a >= b >= c don't holds new a-5, b-4, c-6",
-      actual: Feature.inequality_a_more_equal_b_more_equal_c(-5, -4, -6))
+    assert(expected: [5, 4, 6], actual: Feature.inequality_a_more_equal_b_more_equal_c(-5, -4, -6))
   end
 
   def inequality_a_more_equal_b_more_equal_c_t2
-    assert(expected: "inequality a >= b >= c holds new a- -10, b- -10, c- -10",
+    assert(expected: [-10, -10, -10],
       actual: Feature.inequality_a_more_equal_b_more_equal_c(-5, -5, -5))
   end
 
   def calculate_number_z_t1
-    assert(expected: "z = 1", actual: Feature.calculate_number_z(5, 4))
+    assert(expected: 1 , actual: Feature.calculate_number_z(5, 4))
   end
 
   def calculate_number_z_t2
-    assert(expected: "z = 0", actual: Feature.calculate_number_z(4, 5))
+    assert(expected: 0 , actual: Feature.calculate_number_z(4, 5))
   end
 
   def comparisons_x_y_and_output_t1
-    assert(expected: "The first number is more = 5", actual: Feature.comparisons_x_y_and_output(5, 4))
+    assert(expected: 5, actual: Feature.comparisons_x_y_and_output(5, 4))
   end
 
   def comparisons_x_y_and_output_t2
-    assert(expected: "both numbers 4, 5", actual: Feature.comparisons_x_y_and_output(4, 5))
+    assert(expected: [4, 5], actual: Feature.comparisons_x_y_and_output(4, 5))
   end
 
   def comparisons_x_y_and_output_or_replacement_x_by_0_t1
-    assert(expected: " Replace 0", actual: Feature.comparisons_x_y_and_output_or_replacement_x_by_0(5, 5))
+    assert(expected: 0 , actual: Feature.comparisons_x_y_and_output_or_replacement_x_by_0(5, 5))
   end
 
   def comparisons_x_y_and_output_or_replacement_x_by_0_t2
-    assert(expected: "both numbers 5, 4", actual: Feature.comparisons_x_y_and_output_or_replacement_x_by_0(5, 4))
+    assert(expected: [5, 4], actual: Feature.comparisons_x_y_and_output_or_replacement_x_by_0(5, 4))
   end
 
   def comparisons_x_y_and_replacement_less_halfsum_more_doubled_t1
-    assert(expected: " Replace x= 4.5,y= 40",
+    assert(expected:  [x=4.5, y= 40],
       actual: Feature.comparisons_x_y_and_replacement_less_halfsum_more_doubled(5, 4))
   end
 
   def comparisons_x_y_and_replacement_less_halfsum_more_doubled_t2
-    assert(expected: "Replace y= 4.5, x= 40",
+    assert(expected: [y= 4.5, x= 40],
       actual: Feature.comparisons_x_y_and_replacement_less_halfsum_more_doubled(4, 5))
   end
 
   def squaring_non_negative_number_t1
-    expected_result = { a: "New x - 36 ", b: "New y - 25 ", c: "New z - 16 " }
+    expected_result = { a_more_0: 36, b_more_0: 25, c_more_0: 16 }
     assert(expected: expected_result, actual: Feature.squaring_non_negative_number(6, 5, 4))
   end
 
   def squaring_non_negative_number_t2
-    expected_result = { a: nil, b: nil, c: nil }
+    expected_result = { a_more_0: nil, b_more_0: nil, c_more_0: nil }
     assert(expected: expected_result, actual: Feature.squaring_non_negative_number(-6, -5, -4))
   end
 
   def floor_round_ineteger_number_x_t
-    expected_result = { a: 2, b: 3, c: 2 }
+    expected_result = { floor: 2, round: 3, to_i: 2 }
     assert(expected: expected_result, actual: Feature.floor_round_ineteger_number_x(2.6))
   end
 
   def determine_even_number_t1
-    assert(expected: 'Number is even', actual: Feature.determine_even_number(4))
+    assert(expected: true , actual: Feature.determine_even_number(4))
   end
 
   def determine_even_number_t2
-    assert(expected: 'Number is  not even!', actual: Feature.determine_even_number(5))
+    assert(expected: false , actual: Feature.determine_even_number(5))
   end
 
   def determine_venness_remainder_division_r_s_t1
-    expected_result = { x: 'remainder equal to r', y: nil, z: nil}
+    expected_result = { remainder_equal_r: true, remainder_equal_s: nil, remainder_not_equal_r_or_s: nil}
     assert(expected: expected_result, actual: Feature.determine_venness_remainder_division_r_s(4, 2, 0, 4))
   end
 
   def determine_venness_remainder_division_r_s_t2
-    expected_result = { x: nil, y: 'remainder equal to s', z: nil}
+    expected_result = { remainder_equal_r: nil, remainder_equal_s: true, remainder_not_equal_r_or_s: nil}
     assert(expected: expected_result, actual: Feature.determine_venness_remainder_division_r_s(4, 2, 4, 0))
   end
 
   def determine_venness_remainder_division_r_s_t3
-    expected_result = { x: nil, y: nil, z: 'remainder not equal to s or r'}
+    expected_result = { remainder_equal_r: nil, remainder_equal_s: nil, remainder_not_equal_r_or_s: true}
     assert(expected: expected_result, actual: Feature.determine_venness_remainder_division_r_s(4, 2, 4, 2))
   end
 
   def determining_hundreds_in_number_t1
-    assert(expected: 'Your number have 5 hundreds', actual: Feature.determining_hundreds_in_number(500))
+    assert(expected: 5, actual: Feature.determining_hundreds_in_number(500))
   end
 
   def determining_hundreds_in_number_t2
-    assert(expected: 'Number must be more 99!', actual: Feature.determining_hundreds_in_number(50))
+    assert(expected: false, actual: Feature.determining_hundreds_in_number(50))
   end
 
   def equality_square_number_n_cube_its_sum_t1
-    assert(expected: 'They are not equal', actual: Feature.equality_square_number_n_cube_its_sum(50))
+    assert(expected: false , actual: Feature.equality_square_number_n_cube_its_sum(50))
   end
 
   def equality_square_number_n_cube_its_sum_t2
-    assert(expected: 'They are equal', actual: Feature.equality_square_number_n_cube_its_sum(1))
+    assert(expected: true, actual: Feature.equality_square_number_n_cube_its_sum(1))
   end
 
   def including_sum_last_first_last_but_one_number_value_n_t
@@ -308,20 +306,17 @@ class Spec
   end
 
   def number_check_t1
-    expected_result = { a: 'Number is palindrome', b: "Number don't have three the same digits",
-      c: "Number don't have all the different digits"}
+    expected_result = {palindrome: true , three_identical_numbers: false , numbers_different: false }
     assert(expected: expected_result, actual: Feature.number_check(2002))
   end
 
   def number_check_t2
-    expected_result = { a: 'Number is not palindrome', b: 'Number have three the same digits',
-      c: "Number don't have all the different digits"}
+    expected_result = { palindrome: false , three_identical_numbers: true , numbers_different: false }
     assert(expected: expected_result, actual: Feature.number_check(2022))
   end
 
   def number_check_t3
-    expected_result = { a: 'Number is not palindrome', b: "Number don't have three the same digits",
-      c: 'Number have all the different digits'}
+    expected_result = { palindrome: false , three_identical_numbers: false , numbers_different: true }
     assert(expected: expected_result, actual: Feature.number_check(2034))
   end
 
@@ -329,3 +324,5 @@ class Spec
   assert(expected: 1.7298409468177145e-14, actual: Feature.calculate_the_progression )
   end
 end
+
+
