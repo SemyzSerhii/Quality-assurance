@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'quality_assurance'
-  s.version     = '1.0.0'
+  s.version     = '1.0.1'
   s.date        = '2018-11-04'
 
   s.summary     = 'Quality_assurance!'
